@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import AddTodo from "../component/AddTodo";
+import Todos from "../component/todos";
+import myHome from "./Home.css";
+
+
 
 class Home extends Component {
   // A default state of this component with an empty list of todos.
@@ -6,6 +11,7 @@ class Home extends Component {
     super();
     this.state = {
       // create your empty list here call it todos.
+      todos: [], //check this shit lol, why not let todos = []
     };
   }
   // the addTodo function simply creates a new array that includes the user submitted todo item and then
@@ -27,10 +33,18 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <p> Replace this</p>
         <h1>Todo's </h1>
+        <Todos todos={this.state.todos} />
+        <AddTodo addTodo={this.addTodo} />
       </div>
     );
+    //idea: we get raw input data from addTodos => we create a list with id and shit in our states called todos
+    //now pass that javscript todos list to the componenet Todos that makes actual html graphic to-do-items.
+
+    //on the home page, we have the current todos,  handled by todos above
+    //then we have input field and submit button for new todos, which is created by addtodo
+    //within addtodos => it calls our very own adddtodos function in homes to process the input
+    //into a javscript list. we have to feed this.addTodo into the addtodo componenet becasue that is how it ?
   }
 }
 
